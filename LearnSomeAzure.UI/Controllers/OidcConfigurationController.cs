@@ -8,8 +8,7 @@ namespace LearnSomeAzure.UI.Controllers
     {
         private readonly ILogger<OidcConfigurationController> logger;
 
-        public OidcConfigurationController(IClientRequestParametersProvider clientRequestParametersProvider,
-            ILogger<OidcConfigurationController> _logger)
+        public OidcConfigurationController(IClientRequestParametersProvider clientRequestParametersProvider, ILogger<OidcConfigurationController> _logger)
         {
             ClientRequestParametersProvider = clientRequestParametersProvider;
             logger = _logger;
@@ -18,7 +17,7 @@ namespace LearnSomeAzure.UI.Controllers
         public IClientRequestParametersProvider ClientRequestParametersProvider { get; }
 
         [HttpGet("_configuration/{clientId}")]
-        public IActionResult GetClientRequestParameters([FromRoute] string clientId)
+        public IActionResult GetClientRequestParameters([FromRoute]string clientId)
         {
             var parameters = ClientRequestParametersProvider.GetClientParameters(HttpContext, clientId);
             return Ok(parameters);

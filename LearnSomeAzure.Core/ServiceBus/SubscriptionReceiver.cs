@@ -33,7 +33,7 @@ namespace LearnSomeAzure.Core.ServiceBus
             var orderJson = Encoding.UTF8.GetString(message.Body);
             var order = JsonConvert.DeserializeObject<Order>(orderJson);
 
-            Console.WriteLine($"{ order.ToString() }");
+            Console.WriteLine($"{ order.Items }");
 
             // Complete the message
             await _subscriptionClient.CompleteAsync(message.SystemProperties.LockToken);
